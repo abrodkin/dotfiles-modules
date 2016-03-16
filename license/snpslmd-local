@@ -1,0 +1,15 @@
+#%Module1.0
+
+set global(install,app_title) "Synopsys License Manager settings for local licenses"
+set list [ split $ModulesCurrentModulefile / ]
+set global(install,abbr_app_name) [ lindex $list end-1 ]
+set global(install,version_number) [ lindex $list end-0 ]
+
+proc ModulesDisplay { } {
+	global global
+	puts stderr "$global(app,display)"
+}
+
+module-whatis "$global(install,app_title)"
+
+append-path	SNPSLMD_LICENSE_FILE	$env(ENV_MODULES_TOOLS_PATH)/arc/licenses

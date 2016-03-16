@@ -1,0 +1,15 @@
+#%Module1.0
+
+set global(install,app_title) "Synopsys License Manager settings for remote licenses"
+set list [ split $ModulesCurrentModulefile / ]
+set global(install,abbr_app_name) [ lindex $list end-1 ]
+set global(install,version_number) [ lindex $list end-0 ]
+
+proc ModulesDisplay { } {
+	global global
+	puts stderr "$global(app,display)"
+}
+
+module-whatis "$global(install,app_title)"
+
+append-path	SNPSLMD_LICENSE_FILE	26585@us01snpslmd3:26585@us01snpslmd4:26585@us01snpslmd
