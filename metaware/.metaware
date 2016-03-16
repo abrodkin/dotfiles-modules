@@ -1,0 +1,41 @@
+#%Module1.0
+
+conflict mwdt
+
+set global(install,app_title) "MetaWare Development Toolkit"
+set list [ split $ModulesCurrentModulefile / ]
+set global(install,abbr_app_name) [ lindex $list end-1 ]
+set global(install,version_number) [ lindex $list end-0 ]
+
+set global(install,common) $env(ENV_MODULES_TOOLS_PATH)/arc/metaware
+
+switch -exact $global(install,version_number) {
+	k2015.06 {
+		set global(app,prefix) $global(install,version_number)
+		}
+	j2014.12-rc1 {
+		set global(app,prefix) $global(install,version_number)
+		}
+	j2014.06 {
+		set global(app,prefix) $global(install,version_number)
+		}
+	default {
+		puts stderr $global(install,error)
+		return
+	}
+}
+
+proc ModulesDisplay { } {
+	global global
+	puts stderr "$global(app,display)"
+}
+
+module-whatis "$global(install,app_title)"
+
+prepend-path	METAWARE_ROOT		$global(install,common)/$global(app,prefix)/MetaWare
+prepend-path	METAWARE_HOME		$global(install,common)/$global(app,prefix)/MetaWare/arc
+prepend-path	MW_HOME			$global(install,common)/$global(app,prefix)
+prepend-path	PATH			$global(install,common)/$global(app,prefix)/MetaWare/ide
+prepend-path	PATH			$global(install,common)/$global(app,prefix)/MetaWare/profiler/bin
+prepend-path	PATH			$global(install,common)/$global(app,prefix)/MetaWare/arc/bin
+#prepend-path	LD_LIBRARY_PATH		$global(install,common)/$global(app,prefix)/MetaWare/arc/lib

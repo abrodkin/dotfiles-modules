@@ -1,0 +1,60 @@
+#%Module1.0
+
+conflict nsim
+
+set global(install,app_title) "nSIM"
+set list [ split $ModulesCurrentModulefile / ]
+set global(install,abbr_app_name) [ lindex $list end-1 ]
+set global(install,version_number) [ lindex $list end-0 ]
+
+set list [ split $global(install,version_number) : ]
+set global(install,version_number) [ lindex $list 0 ]
+set global(install,bits_number) [ lindex $list 1 ]
+
+set global(install,common) $env(ENV_MODULES_TOOLS_PATH)/arc/nsim
+
+switch -exact $global(install,version_number) {
+	k2015.09-rc2 {
+		set global(app,prefix) $global(install,version_number)
+	}
+	k2015.06 {
+		set global(app,prefix) $global(install,version_number)
+	}
+	j2014.12 {
+		set global(app,prefix) $global(install,version_number)
+	}
+	free-2015.06 {
+		set global(app,prefix) $global(install,version_number)
+	}
+	default {
+		puts stderr $global(install,error)
+		return
+	}
+}
+
+switch -exact $global(install,bits_number) {
+	64 {
+		set global(app,bits) "_64"
+	}
+	default {
+		set global(app,bits) ""
+	}
+}
+
+
+proc ModulesDisplay { } {
+	global global
+	puts stderr "$global(app,display)"
+}
+
+module-whatis "$global(install,app_title)"
+
+prepend-path	NSIM_HOME		$global(install,common)/$global(app,prefix)/nSIM$global(app,bits)
+prepend-path	PATH			$global(install,common)/$global(app,prefix)/nSIM$global(app,bits)
+prepend-path	PATH			$global(install,common)/$global(app,prefix)/nSIM$global(app,bits)/bin
+prepend-path	LD_LIBRARY_PATH		$global(install,common)/$global(app,prefix)/nSIM$global(app,bits)/lib
+
+prepend-path	SYSTEMC_HOME		$env(ENV_MODULES_TOOLS_PATH)/arc/systemc-2.3.1
+prepend-path	LD_LIBRARY_PATH		$env(ENV_MODULES_TOOLS_PATH)/arc/systemc-2.3.1/lib-linux
+prepend-path	TLM_HOME		$env(ENV_MODULES_TOOLS_PATH)/arc/systemc-2.3.1
+prepend-path	SCML_HOME		$env(ENV_MODULES_TOOLS_PATH)/arc/scml-2.3

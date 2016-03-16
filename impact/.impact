@@ -1,0 +1,34 @@
+#%Module1.0
+
+conflict xilinx-imact
+
+set global(install,app_title) "Xilinx Impact FPGA programming tool"
+set list [ split $ModulesCurrentModulefile / ]
+set global(install,abbr_app_name) [ lindex $list end-1 ]
+set global(install,version_number) [ lindex $list end-0 ]
+
+set global(install,common) $env(ENV_MODULES_TOOLS_PATH)/xilinx
+set global(install,usb-driver) $env(ENV_MODULES_TOOLS_PATH)/xilinx/usb-driver
+
+switch -exact $global(install,version_number) {
+	14.7 {
+		set global(app,prefix) "14.7"
+	}
+	default {
+		puts stderr $global(install,error)
+		return
+	}
+}
+
+proc ModulesDisplay { } {
+	global global
+	puts stderr "$global(app,display)"
+}
+
+module-whatis "$global(install,app_title)"
+
+setenv		XILINX			$global(install,common)/$global(app,prefix)/LabTools/LabTools
+setenv		XIL_SCRIPT_LOC_TMP_UNI	$global(install,common)/$global(app,prefix)/LabTools
+setenv		XILINX_PREFIX		$global(install,common)/$global(app,prefix)/LabTools
+#setenv		LD_PRELOAD		$global(install,usb-driver)/libusb-driver.so
+prepend-path	PATH			$global(install,common)/$global(app,prefix)/LabTools/LabTools/bin/lin
