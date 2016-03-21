@@ -58,6 +58,6 @@ prepend-path	PATH			$global(install,common)/$global(app,prefix)/nSIM$global(app,
 prepend-path	LD_LIBRARY_PATH		$global(install,common)/$global(app,prefix)/nSIM$global(app,bits)/lib
 
 prepend-path	SYSTEMC_HOME		$env(ENV_MODULES_TOOLS_PATH)/arc/systemc-2.3.1
-prepend-path	LD_LIBRARY_PATH		$env(ENV_MODULES_TOOLS_PATH)/arc/systemc-2.3.1/lib-linux
+prepend-path	LD_LIBRARY_PATH		$env(ENV_MODULES_TOOLS_PATH)/arc/systemc-2.3.1/lib-linux64
 prepend-path	TLM_HOME		$env(ENV_MODULES_TOOLS_PATH)/arc/systemc-2.3.1
 prepend-path	SCML_HOME		$env(ENV_MODULES_TOOLS_PATH)/arc/scml-2.3
