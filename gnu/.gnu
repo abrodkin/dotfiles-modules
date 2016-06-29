@@ -122,6 +122,10 @@ switch -exact $global(install,version_number) {
 		set global(app,prefix) $global(install,version_number)
 		set global(app,cross_compile) "arc-linux-uclibc-"
 	}
+	2.4 {
+		set global(app,prefix) $global(install,version_number)
+		set global(app,cross_compile) "arc-elf32-"
+	}
 	2.3 {
 		set global(app,prefix) $global(install,version_number)
 		set global(app,cross_compile) "arc-elf32-"
