@@ -6,6 +6,7 @@ set global(install,app_title) "ARC GNU Toolchain"
 set list [ split $ModulesCurrentModulefile / ]
 set global(install,abbr_app_name) [ lindex $list end-1 ]
 set global(install,version_number) [ lindex $list end-0 ]
+set global(app,arch) "arc"
 
 set global(install,common) $env(ENV_MODULES_TOOLS_PATH)/arc/gnu
 
@@ -138,6 +139,11 @@ switch -exact $global(install,version_number) {
 		set global(app,prefix) $global(install,version_number)
 		set global(app,cross_compile) "arc-elf32-"
 	}
+	arm {
+		set global(app,prefix) $global(install,version_number)
+		set global(app,cross_compile) "arm-linux-gnu-"
+		set global(app,arch) "arm"
+	}
 	default {
 		puts stderr $global(install,error)
 		return
@@ -152,6 +158,6 @@ proc ModulesDisplay { } {
 module-whatis "$global(install,app_title)"
 
 #setenv		TEST_MODULE	$::env(ENV_MODULES_TOOLS_PATH)
-setenv		ARCH		arc
+setenv		ARCH		$global(app,arch)
 setenv		CROSS_COMPILE	"ccache $global(app,cross_compile)"
 append-path	PATH		$global(install,common)/$global(app,prefix)/bin
