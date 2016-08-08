@@ -12,7 +12,8 @@ sudo apt-get install environment-modules
 
 ## Clone this repo in *~/.modules* ##
 ```
-git clone git@bitbucket.org:abrodkin/modules.git ~/.modules
+git clone https://github.com/abrodkin/dotfiles-modules ~/.modules
+
 ```
 
 ## Set ENV_MODULES_TOOLS_PATH variable that points to root folder with tools
@@ -39,5 +40,5 @@ module() { eval `/usr/bin/modulecmd $modules_shell $*`; }
 #module() { eval `/usr/share/Modules/$MODULE_VERSION/bin/modulecmd $modules_shell $*`; }
 
 # Load default modules
-module load mwdt arc-gnu
+module load metaware gnu
 ```
