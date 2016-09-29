@@ -1,6 +1,6 @@
 #%Module1.0
 
-conflict arc-gnu
+conflict gnu
 
 set global(install,app_title) "ARC GNU Toolchain"
 set list [ split $ModulesCurrentModulefile / ]
@@ -11,6 +11,22 @@ set global(app,arch) "arc"
 set global(install,common) $env(ENV_MODULES_TOOLS_PATH)/arc/gnu
 
 switch -exact $global(install,version_number) {
+	2016.09-eng014-uclibc-arc700 {
+		set global(app,prefix) $global(install,version_number)
+		set global(app,cross_compile) "arc-linux-"
+	}
+	2016.09-eng014-uclibc-archs {
+		set global(app,prefix) $global(install,version_number)
+		set global(app,cross_compile) "arc-linux-"
+	}
+	2016.09-eng009-uclibc-arc700 {
+		set global(app,prefix) $global(install,version_number)
+		set global(app,cross_compile) "arc-linux-"
+	}
+	2016.09-eng009-uclibc-archs {
+		set global(app,prefix) $global(install,version_number)
+		set global(app,cross_compile) "arc-linux-"
+	}
 	2016.09-eng007-uclibc-arc700 {
 		set global(app,prefix) $global(install,version_number)
 		set global(app,cross_compile) "arc-linux-"
