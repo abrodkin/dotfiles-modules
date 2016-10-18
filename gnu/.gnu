@@ -11,6 +11,14 @@ set global(app,arch) "arc"
 set global(install,common) $env(ENV_MODULES_TOOLS_PATH)/arc/gnu
 
 switch -exact $global(install,version_number) {
+	2016.09-eng017-uclibc-arc700 {
+		set global(app,prefix) $global(install,version_number)
+		set global(app,cross_compile) "arc-linux-"
+	}
+	2016.09-eng017-uclibc-archs {
+		set global(app,prefix) $global(install,version_number)
+		set global(app,cross_compile) "arc-linux-"
+	}
 	2016.09-eng014-uclibc-arc700 {
 		set global(app,prefix) $global(install,version_number)
 		set global(app,cross_compile) "arc-linux-"
