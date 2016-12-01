@@ -10,6 +10,9 @@ set global(install,version_number) [ lindex $list end-0 ]
 set global(install,common) $env(ENV_MODULES_TOOLS_PATH)/arc/metaware
 
 switch -exact $global(install,version_number) {
+	l2016.09 {
+		set global(app,prefix) $global(install,version_number)
+		}
 	l2016.03 {
 		set global(app,prefix) $global(install,version_number)
 		}
