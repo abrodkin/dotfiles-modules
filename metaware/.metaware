@@ -50,4 +50,5 @@ prepend-path	MW_HOME			$global(install,common)/$global(app,prefix)
 prepend-path	PATH			$global(install,common)/$global(app,prefix)/MetaWare/ide
 prepend-path	PATH			$global(install,common)/$global(app,prefix)/MetaWare/profiler/bin
 prepend-path	PATH			$global(install,common)/$global(app,prefix)/MetaWare/arc/bin
-#prepend-path	LD_LIBRARY_PATH		$global(install,common)/$global(app,prefix)/MetaWare/arc/lib
+prepend-path	LD_LIBRARY_PATH		$global(install,common)/$global(app,prefix)/MetaWare/arc/bin
+prepend-path	LD_LIBRARY_PATH		$global(install,common)/$global(app,prefix)/license/bin
