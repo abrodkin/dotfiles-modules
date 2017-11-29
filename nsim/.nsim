@@ -14,6 +14,9 @@ set global(install,bits_number) [ lindex $list 1 ]
 set global(install,common) $env(ENV_MODULES_TOOLS_PATH)/arc/nsim
 
 switch -exact $global(install,version_number) {
+	n2017.12-eng012 {
+		set global(app,prefix) $global(install,version_number)
+	}
 	n2017.09 {
 		set global(app,prefix) $global(install,version_number)
 	}
